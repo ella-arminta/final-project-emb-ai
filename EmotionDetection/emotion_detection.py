@@ -26,13 +26,23 @@ def emotion_detector(text_to_analyze):
                 dominant_emotion = emotion
         return {
             'anger': emotions['anger'],
-            'disgust' : emotions['disgust'],
+            'disgust': emotions['disgust'],
             'fear': emotions['fear'],
             'joy': emotions['joy'],
-            'sadness' : emotions['sadness'],
+            'sadness': emotions['sadness'],
             'dominant_emotion': dominant_emotion
         }
+
+    elif response.status_code == 400:
+        return {
+            'anger': None,
+            'disgust': None,
+            'fear': None,
+            'joy': None,
+            'sadness': None,
+            'dominant_emotion': None
+        }
+
     else:
         print(f"Error {response.status_code}: {response.text}")
-
-# print(emotion_detector('I am so happy I am doing this'))
+        return None
